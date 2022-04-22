@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Filtered projects will be here</h1>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="filter">Enter search key here </label>
+        <input name="filter" type="text">
+        <button type="submit" >Search</button>
+    </form>
+    {% if projects %}
+        {% for project in projects %}
+            <div class="col-md-4">
+            <div class="card">
+                <div class="row">
+                    <span>{{ project.id }} | {{ project.title }}</span>
+                </div>
+                <img src="{{ project.image }}" alt="project Image">
+                <br>
+                <small>{{ project.description }}</small>
+            </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1> Nothing happened</h1>
+    {% endif %}
+</div>
